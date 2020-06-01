@@ -14,9 +14,8 @@
 \usepackage{amssymb,pifont,bm}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
-\newcommand{\memo}{\ding{117}}%
-\newcommand{\up}{\ding{249}}
-\newcommand{\down}{\ding{247}}
+\newcommand{\memo}{\ding{115}}%
+\newcommand{\up}{\ding{216}}
 
 \newcommand{\legend}[1][\footnotesize]{
   #1\color{gray!60}
@@ -32,7 +31,6 @@
 
 \setmainfont{Liberation Sans}
 \newfontfamily{\weekFont}{Liberation Sans}
-\newfontfamily{\dayFont}{Droid Sans}
 
 \makeatletter
   \def\@week#1{%
@@ -59,7 +57,7 @@
   \deflength{\WWh}{0.5 \WW}
   \deflength{\HHh}{0.5 \WW}
   \deflength{\trackerSpace}{\HH / \EOFmonth}
-  \deflength{\Xspacin}{\HH / 25}
+  \deflength{\dotSpacing}{\HH / 25}
   \deflength{\spacin}{\HH / \EOFmonth}
 
 \begin{document}
@@ -93,7 +91,10 @@
   \draw[line width=1pt] (\WW,0) -- (0,0) |- (\WW,0.75\HH);
   \foreach \i in {1,...,4}
   \draw[gray!40,ultra thin] (\WW/4,\i * 0.75\HH / 5) -- (\WW,\i * 0.75\HH / 5);
-  \foreach \j/\k in {1/\sunday,2/\monday,3/\tuesday}{
+  \foreach \j/\k in { 1/\sunday
+                    , 2/\monday
+                    , 3/\tuesday
+                    }{
   \draw (\j * \WW/4,0) -- (\j * \WW/4,0.75\HH);
   \draw[gray!40,yshift=4\HH/5] (0,0) rectangle (\WW,\HH/5);
   \node[gray!5, below right=.25cm] at (\j * \WW/4,0) {\k};
@@ -107,7 +108,11 @@
   \foreach \j in {1,2,3}
   \draw (\j * \WW/4,0) -- (\j * \WW/4,0.75\HH);
   \draw[gray!40,yshift=4\HH/5] (0,0) rectangle (\WW,\HH/5);
-  \foreach \j/\k in {0/\wednesday,1/\thursday,2/\friday,3/\saturday}
+  \foreach \j/\k in { 0/\wednesday
+                    , 1/\thursday
+                    , 2/\friday
+                    , 3/\saturday
+                    }
   \node[gray!5, below right=.25cm] at (\j * \WW/4,0) {\k};
 \end{tikzpicture}
 
@@ -117,7 +122,7 @@
 \begin{tikzpicture}[yscale=-1]
 	\foreach \i in {1,...,\EOFmonth}
   \draw[gray!40] (0,\i * \spacin) -- (\WW,\i * \spacin) 
-  node[above, pos=.05,black] {\i};
+    node[above, pos=.05,black] {\i};
 	\draw[line width=1pt] (0,0) rectangle (\WW,\HH);
 \end{tikzpicture}
 
@@ -127,7 +132,7 @@
   \draw[gray!40] (0,\i * \spacin) -- (\WWh,\i * \spacin) 
     node[above, pos=1.05] {\footnotesize\i};
 	\foreach \i in {1,...,9}
-  \draw[densely dotted] (\i * \WWh/10,0) -- (\i * \WWh/10,\HH) 
+  \draw[densely dotted,gray!75] (\i * \WWh/10,0) -- (\i * \WWh/10,\HH) 
     node[pos=.01,fill=white] {\rotatebox{90}{\tiny\i}};
 	\draw (\WWh+1cm,\HHh) -- ++(.5,0) node[right] {sleep};
   \draw[dashed] (\WWh+1cm,\HHh-1cm) -- ++(.5,0) 
@@ -192,7 +197,7 @@
     \clip (0,0) rectangle (\WW,\HH);
     \foreach \i in {1,...,16}{
       \foreach \j in {1,...,24}
-      \fill[gray!40] (\i * \Xspacin , \j * \Xspacin) circle (.5pt);
+      \fill[gray!40] (\i * \dotSpacing , \j * \dotSpacing) circle (.5pt);
       }
     \draw[line width=.1pt] (0,0) rectangle (\WW,\HH);
   \end{tikzpicture}

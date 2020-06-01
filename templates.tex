@@ -142,15 +142,15 @@
     \begin{bjpage}
       \foreach \i in {1,...,\EOFmonth}
       \draw[gray!40] (0,\i * \spacin) -- (\WWh,\i * \spacin)
-      node[above, pos=1.05] {\footnotesize\i};
+        node[above, pos=1.05] {\footnotesize\i};
       \foreach \i in {1,...,9}
       \draw[densely dotted,gray!75] (\i * \WWh/10,0) -- (\i * \WWh/10,\HH)
-      node[pos=.01,fill=white] {\rotatebox{90}{\tiny\i}};
+        node[pos=.01,fill=white] {\rotatebox{90}{\tiny\i}};
       \draw (\WWh+1cm,\HHh) -- ++(.5,0) node[right] {sleep};
       \draw[dashed] (\WWh+1cm,\HHh-1cm) -- ++(.5,0)
-      node[right] {hatred 4 humans};
+        node[right] {hatred 4 humans};
       \draw[dotted] (\WWh+1cm,\HHh-2cm) -- ++(.5,0)
-      node[right] {mood};
+        node[right] {mood};
       \draw[line width=1pt] (0,0) rectangle (\WWh,\HH);
     \end{bjpage}
     % ==[ single week ]=====================================================

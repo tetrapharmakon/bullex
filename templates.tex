@@ -103,26 +103,26 @@
       \draw[line width=1pt] (\WW,0) -- (0,0) |- (\WW,\HHq);
       \foreach \i in {1,...,4}
       \draw[gray!40,ultra thin] (\WW/4,\i * \HHq / 5) -- (\WW,\i * \HHq / 5);
-			\foreach \j/\k in 
-			    { 1/\sunday
+      \foreach \j/\k in 
+          { 1/\sunday
           , 2/\monday
           , 3/\tuesday
-					}{ \draw (\j * \WW/4,0) -- (\j * \WW/4,\HHq);
+          }{ \draw (\j * \WW/4,0) -- (\j * \WW/4,\HHq);
              \draw[gray!40,yshift=4\HH/5] (0,0) rectangle (\WW,\HH/5);
              \node[gray!5, below right=.25cm] at (\j * \WW/4,0) {\k};
            }
     \end{bjpage}
     \begin{bjpage}
-			\draw[line width=1pt] 
-			  (0,0) -| (\WW,\HHq) -- (0,\HHq);
+      \draw[line width=1pt] 
+        (0,0) -| (\WW,\HHq) -- (0,\HHq);
       \foreach \i in {1,...,4}
-			\draw[gray!40,ultra thin] 
-			  (0,\i * \HHq / 5) -- (\WW,\i * \HHq / 5);
+      \draw[gray!40,ultra thin] 
+        (0,\i * \HHq / 5) -- (\WW,\i * \HHq / 5);
       \foreach \j in {1,2,3}
       \draw (\j * \WW/4,0) -- (\j * \WW/4,\HHq);
       \draw[gray!40,yshift=4\HH/5] (0,0) rectangle (\WW,\HH/5);
-			\foreach \j/\k in 
-			    { 0/\wednesday
+      \foreach \j/\k in 
+          { 0/\wednesday
           , 1/\thursday
           , 2/\friday
           , 3/\saturday
@@ -160,8 +160,8 @@
           \draw (\WWh,0) -- (\WWh,\HH);
           \node[below right=.5cm] at (\WWh,0) {\sunday};
           \node[below left=1cm] at (\WWh,0) {\legend};
-					\foreach \i/\j/\k in 
-					    { 1 / \monday    / \tuesday
+          \foreach \i/\j/\k in 
+              { 1 / \monday    / \tuesday
               , 2 / \wednesday / \thursday
               , 3 / \friday    / \saturday
               }
@@ -177,8 +177,8 @@
           \draw (\WWqh,0) -- (\WWqh,\HH/2);
           \node[below right=.5cm] at (\WWqh,0) {\sunday};
           \node[below left=.5cm] at (\WWqh,0) {\legend[\tiny]};
-					\foreach \i/\j/\k in 
-					    { 1/ \monday    / \tuesday
+          \foreach \i/\j/\k in 
+              { 1/ \monday    / \tuesday
               , 2/ \wednesday / \thursday
               , 3/ \friday    / \saturday
               }
@@ -190,8 +190,8 @@
             \draw (\WWqh,0) -- (\WWqh,\HH/2);
             \node[below right=.5cm] at (\WWqh,0) {\sunday};
             \node[below left=.5cm] at (\WWqh,0) {\legend[\tiny]};
-						\foreach \i/\j/\k in 
-						    { 1 / \monday    / \tuesday
+            \foreach \i/\j/\k in 
+                { 1 / \monday    / \tuesday
                 , 2 / \wednesday / \thursday
                 , 3 / \friday    / \saturday
                 }
@@ -207,8 +207,8 @@
           \clip (0,0) rectangle (\WW,\HH);
           \foreach \i in {1,...,16}{
               \foreach \j in {1,...,24}
-							\fill[gray!40] 
-							  (\i * \dotSpacing , \j * \dotSpacing) circle (.5pt);
+              \fill[gray!40] 
+                (\i * \dotSpacing , \j * \dotSpacing) circle (.5pt);
             }
           \draw[line width=.1pt] (0,0) rectangle (\WW,\HH);
         \end{bjpage}

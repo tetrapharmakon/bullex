@@ -50,6 +50,8 @@
   \def\saturday{\@week{Sa}}
 \makeatother
 
+\newcommand{\fsize}[1]{\fontsize{#1}{#1}\selectfont}
+
 \def\EOFmonth{31}
 \newcommand{\deflength}[2]{\newlength{#1}\setlength{#1}{#2}}
   \deflength{\WW}{\textwidth  - 2mm}
@@ -61,6 +63,14 @@
   \deflength{\spacin}{\HH / \EOFmonth}
 
 \begin{document}
+
+\begin{tikzpicture}
+  \draw[white] (0,0) rectangle (\WW,\HH) 
+    node[black,pos=.5] 
+      {\fsize{55} ASBJ}
+    node[gray!75,pos=.4] 
+      {\fsize{25} A Simple Bullet Journal};
+\end{tikzpicture}
 
 %==[ splash month ]=====================================================
 \foreach \month/\len in 
@@ -78,7 +88,7 @@
   , December/31}{ 
 \begin{tikzpicture}[yscale=-1]
   \fill[gray!15] (0,0) rectangle (\WW/4,.75\HH) 
-    node[gray!40,pos=.5] {\rotatebox{90}{\fontsize{45}{45}\selectfont \month}};
+    node[gray!40,pos=.5] {\rotatebox{90}{\fsize{45} \month}};
   \node[below left] at (\WW/4,0) {\legend};
   \draw[line width=1pt] (\WW,0) -- (0,0) |- (\WW,0.75\HH);
   \foreach \i in {1,...,4}

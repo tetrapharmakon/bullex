@@ -1,0 +1,72 @@
+\pagestyle{empty}
+\usepackage[ left=3cm
+           , right=1cm
+           , top=2cm
+           , bottom=2cm
+           ]{geometry}
+\setlength{\parindent}{0ex}
+\usepackage{ tikz
+           , calc
+           , fontspec
+           , amssymb
+           , pifont
+           , bm
+           }
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\memo}{\ding{115}}%
+\newcommand{\up}{\ding{216}}
+
+\newcommand{\legend}[1][\footnotesize]{
+  #1\color{gray!60}
+  \begin{tabular}{rl}
+    $\circ$ & event \\
+    $\bullet$ & task \\
+    \xmark & done\\
+    $\boldsymbol{!}$ & impor\\
+    \memo & memo\\
+    \up & postpone
+    \end{tabular}
+}
+
+\setmainfont{Liberation Sans}
+\newfontfamily{\weekFont}{Liberation Sans}
+
+\makeatletter
+  \def\@week#1{%
+    \color{gray!45}%
+    \fontsize{15}{15}%
+    \selectfont%
+    \weekFont{#1}
+  }
+  \def\sunday{\@week{Su}}
+  \def\monday{\@week{Mo}}
+  \def\tuesday{\@week{Tu}}
+  \def\wednesday{\@week{We}}
+  \def\thursday{\@week{Th}}
+  \def\friday{\@week{Fr}}
+  \def\saturday{\@week{Sa}}
+\makeatother
+
+\newcommand{\fsize}[1]{\fontsize{#1}{#1}\selectfont}
+
+\def\EOFmonth{31}
+\newcommand{\deflength}[2]{\newlength{#1}\setlength{#1}{#2}}
+  \deflength{\WW}        {\textwidth  - 2mm}
+  \deflength{\HH}        {\textheight - 2mm}
+  \deflength{\WWh}       {0.5\WW}
+  \deflength{\WWq}       {0.75\WW}
+  \deflength{\WWqh}      {0.75\WWh}
+  \deflength{\HHh}       {0.5\HH}
+  \deflength{\HHq}       {0.75\HH}
+  \deflength{\dotSpacing}{\HH / 25}
+  \deflength{\spacin}    {\HH / \EOFmonth}
+
+\newenvironment{bjpage}%
+  { \begin{tikzpicture}[yscale=-1] }%
+  { \end{tikzpicture}\newpage      }
+
+
+\tikzset{ mill/.style = {line width=.1mm,gray!20}
+        , cent/.style = {thick,gray!60}
+        }

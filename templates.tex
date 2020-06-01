@@ -7,11 +7,13 @@
            , bottom=2cm
            ]{geometry}
 \setlength{\parindent}{0ex}
-\usepackage{tikz}
-\usepackage{calc}
-\usepackage{fontspec}
-
-\usepackage{amssymb,pifont,bm}
+\usepackage{ tikz
+           , calc
+           , fontspec
+           , amssymb
+           , pifont
+           , bm
+           }
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
 \newcommand{\memo}{\ding{115}}%
@@ -60,16 +62,23 @@
   \deflength{\dotSpacing}{\HH / 25}
   \deflength{\spacin}{\HH / \EOFmonth}
 
-\begin{document}
+\newenvironment{bjpage}%
+  {\begin{tikzpicture}[yscale=-1]}%
+  {\end{tikzpicture}\newpage}
 
+
+\tikzset{ mill/.style = {line width=.1mm,gray!20}
+        , cent/.style = {thick,gray!60}
+        }
+\begin{document}
+%==[ titlepage ]========================================================
 \begin{tikzpicture}
   \draw[white] (0,0) rectangle (\WW,\HH)
   node[black,pos=.5]
     {\fsize{55} ASBJ}
   node[gray!75,pos=.4]
     {\fsize{25} A Simple Bullet Journal};
-\end{tikzpicture}
-
+\end{tikzpicture}\newpage
 %==[ splash month ]=====================================================
 \foreach \month/\len in
   { January/31
@@ -85,7 +94,7 @@
     , November/30
     , December/31
   }{
-    \begin{tikzpicture}[yscale=-1]
+    \begin{bjpage}
       \fill[gray!15] (0,0) rectangle (\WW/4,.75\HH)
       node[gray!40,pos=.5] {\rotatebox{90}{\fsize{45} \month}};
       \node[below left] at (\WW/4,0) {\legend};
@@ -100,9 +109,8 @@
           \draw[gray!40,yshift=4\HH/5] (0,0) rectangle (\WW,\HH/5);
           \node[gray!5, below right=.25cm] at (\j * \WW/4,0) {\k};
         }
-    \end{tikzpicture}
-
-    \begin{tikzpicture}[yscale=-1]
+    \end{bjpage}
+    \begin{bjpage}
       \draw[line width=1pt] (0,0) -| (\WW,0.75\HH) -- (0,0.75\HH);
       \foreach \i in {1,...,4}
       \draw[gray!40,ultra thin] (0,\i * 0.75\HH / 5) -- (\WW,\i * 0.75\HH / 5);
@@ -115,20 +123,18 @@
           , 3/\saturday
         }
       \node[gray!5, below right=.25cm] at (\j * \WW/4,0) {\k};
-    \end{tikzpicture}
-
-    %==[ tracker piece 1 ]==================================================
+    \end{bjpage}
+    %==[ tracker piece 1 ]==============================================
     \def\EOFmonth{\len}
     \setlength{\spacin}{\HH / \EOFmonth}
-    \begin{tikzpicture}[yscale=-1]
+    \begin{bjpage}
       \foreach \i in {1,...,\EOFmonth}
       \draw[gray!40] (0,\i * \spacin) -- (\WW,\i * \spacin)
       node[above, pos=.05,black] {\i};
       \draw[line width=1pt] (0,0) rectangle (\WW,\HH);
-    \end{tikzpicture}
-
-    %==[ tracker piece 2 ]==================================================
-    \begin{tikzpicture}[yscale=-1]
+    \end{bjpage}
+    %==[ tracker piece 2 ]==============================================
+    \begin{bjpage}
       \foreach \i in {1,...,\EOFmonth}
       \draw[gray!40] (0,\i * \spacin) -- (\WWh,\i * \spacin)
       node[above, pos=1.05] {\footnotesize\i};
@@ -141,11 +147,10 @@
       \draw[dotted] (\WWh+1cm,\HHh-2cm) -- ++(.5,0)
       node[right] {mood};
       \draw[line width=1pt] (0,0) rectangle (\WWh,\HH);
-    \end{tikzpicture}
-
+    \end{bjpage}
     % ==[ single week ]=====================================================
     \foreach \i in {1,...,5}{
-        \begin{tikzpicture}[yscale=-1]
+        \begin{bjpage}
           \draw[line width=1pt] (0,0) rectangle (\WW,\HH);
           \draw (\WWh,0) -- (\WWh,\HH);
           \node[below right=.5cm] at (\WWh,0) {\sunday};
@@ -157,13 +162,11 @@
           \draw (0,\i * \HH/4) -- (\WW,\i * \HH/4)
           node[pos=.5,below left =.5cm] {\large\j}
           node[pos=.5,below right=.5cm] {\large\k};
-        \end{tikzpicture}
-
+        \end{bjpage}
       }
-
     % ==[ two weeks ]=======================================================
     \foreach \i in {1,...,3}{
-        \begin{tikzpicture}[yscale=-1]
+        \begin{bjpage}
           \draw[line width=1pt] (0,0) rectangle (.75\WW,\HH/2);
           \draw (.75\WWh,0) -- (.75\WWh,\HH/2);
           \node[below right=.5cm] at (.75\WWh,0) {\sunday};
@@ -188,30 +191,24 @@
             node[pos=.5,below left=.5cm] {\large\j}
             node[pos=.5,below right=.5cm] {\large\k};
           \end{scope}
-        \end{tikzpicture}
-
+        \end{bjpage}
       }
-
-    %==[ white pages X10 ]==================================================
+    %==[ white pages X10 ]==============================================
     \foreach \n in {1,...,10}{
-        \begin{tikzpicture}[yscale=-1]
+        \begin{bjpage}
           \clip (0,0) rectangle (\WW,\HH);
           \foreach \i in {1,...,16}{
               \foreach \j in {1,...,24}
               \fill[gray!40] (\i * \dotSpacing , \j * \dotSpacing) circle (.5pt);
             }
           \draw[line width=.1pt] (0,0) rectangle (\WW,\HH);
-        \end{tikzpicture}
-
+        \end{bjpage}
       }
-
   }
 
 %==[ finely ruled sheet ]===============================================
 \foreach \i in {1,...,5}{
-    \begin{tikzpicture}[yscale=-1,
-        mill/.style={line width=.1mm,gray!20},
-        cent/.style={thick,gray!60}]
+    \begin{bjpage}
       \begin{scope}
         \clip (0,0) rectangle (\WW,\HH);
         \foreach \i in {1,...,180}
@@ -224,7 +221,6 @@
         \draw[cent] (0,\i) -- (\WW,\i);
       \end{scope}
       \draw[line width=1pt] (0,0) rectangle (\WW,\HH);
-    \end{tikzpicture}
-
+    \end{bjpage}
   }
 \end{document}

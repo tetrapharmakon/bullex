@@ -13,7 +13,7 @@
 \end{tikzpicture}\newpage
 %==[ splash month ]=====================================================
 \foreach \month/\len in
-  { January/31
+    { January/31
     , February/29
     , March/31
     , April/30
@@ -162,4 +162,17 @@
       \draw[line width=1pt] (0,0) rectangle (\WW,\HH);
     \end{bjpage}
   }
+%==[ white pages X10 ]==============================================
+  \foreach \n in {1,...,10}{
+    \begin{bjpage}
+      \clip (0,0) rectangle (\WW,\HH);
+      \foreach \i in {1,...,16}{
+          \foreach \j in {1,...,24}
+          \fill[gray!40] 
+            (\i * \dotSpacing , \j * \dotSpacing) circle (.5pt);
+        }
+      \draw[line width=.1pt] (0,0) rectangle (\WW,\HH);
+    \end{bjpage}
+  }
+}
 \end{document}

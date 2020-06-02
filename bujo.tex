@@ -28,7 +28,7 @@
   }{
     \begin{bjpage}
       \fill[gray!15] (0,0) rectangle (\WW/4,.75\HH)
-        node[gray!40,pos=.5] {\rotatebox{90}{\fsize{45} \month}};
+        node[gray!40,pos=.5] {\rotatebox{90}{\fsize{45}\monthFont \month}};
       \node[below left] at (\WW/4,0) {\legend};
       \draw[line width=1pt] (\WW,0) -- (0,0) |- (\WW,\HHq);
       \foreach \i in {1,...,4}
@@ -76,11 +76,17 @@
       \foreach \i in {1,...,9}
       \draw[densely dotted,gray!75] (\i * \WWh/10,0) -- (\i * \WWh/10,\HH)
         node[pos=.01,fill=white] {\rotatebox{90}{\tiny\i}};
-      \draw (\WWh+1cm,\HHh) -- ++(.5,0) node[right] {sleep};
-      \draw[dashed] (\WWh+1cm,\HHh-1cm) -- ++(.5,0)
-        node[right] {hatred 4 humans};
-      \draw[dotted] (\WWh+1cm,\HHh-2cm) -- ++(.5,0)
-        node[right] {mood};
+        %
+      \draw (\WWh+\offset,\HHh) -- ++(.5\offset,0) 
+        node[right] {\footnotesize sleep};
+        %
+      \draw[dashed] (\WWh+\offset,\HHh-\offset) -- ++(.5\offset,0)
+        node[right] {\footnotesize hatred 4 humans};
+        %
+      \draw[dotted] (\WWh+\offset,\HHh-2\offset) -- ++(.5\offset,0)
+        node[right] {\footnotesize mood};
+      \node at (\WWh+3\offset,\HHh-7\offset) {\color{gray!40}\fsize{35}\monthFont \rotatebox{90}{\month}};
+        %
       \draw[line width=1pt] (0,0) rectangle (\WWh,\HH);
     \end{bjpage}
     % ==[ single week ]=================================================
@@ -105,29 +111,31 @@
         \begin{bjpage}
           \draw[line width=1pt] (0,0) rectangle (\WWq,\HH/2);
           \draw (\WWqh,0) -- (\WWqh,\HH/2);
-          \node[below right=.5cm] at (\WWqh,0) {\sunday};
-          \node[below left=.5cm] at (\WWqh,0) {\legend[\tiny]};
+          \node[below right=.25cm] at (\WWqh,0) {\ssunday};
+          \node[below left = .5cm,yshift=2.5mm] 
+            at (\WWqh,0) {\legend[\tiny]};
           \foreach \i/\j/\k in 
-              { 1/ \monday    / \tuesday
-              , 2/ \wednesday / \thursday
-              , 3/ \friday    / \saturday
+              { 1/ \smonday    / \stuesday
+              , 2/ \swednesday / \sthursday
+              , 3/ \sfriday    / \ssaturday
               }
           \draw (0,\i * \HH/8) -- (\WWq,\i * \HH/8)
-            node[pos=.5,below left=.5cm] {\large\j}
-            node[pos=.5,below right=.5cm] {\large\k};
+            node[pos=.5,below left=.25cm] {\large\j}
+            node[pos=.5,below right=.25cm] {\large\k};
           \begin{scope}[yshift= \HHh + .75cm]
             \draw[line width=1pt] (0,0) rectangle (\WWq,\HH/2);
             \draw (\WWqh,0) -- (\WWqh,\HH/2);
-            \node[below right=.5cm] at (\WWqh,0) {\sunday};
-            \node[below left=.5cm] at (\WWqh,0) {\legend[\tiny]};
+            \node[below right=.25cm] at (\WWqh,0) {\ssunday};
+            \node[below left = .5cm,yshift=2.5mm] 
+              at (\WWqh,0) {\legend[\tiny]};
             \foreach \i/\j/\k in 
-                { 1 / \monday    / \tuesday
-                , 2 / \wednesday / \thursday
-                , 3 / \friday    / \saturday
+                { 1 / \smonday    / \stuesday
+                , 2 / \swednesday / \sthursday
+                , 3 / \sfriday    / \ssaturday
                 }
             \draw (0,\i * \HH/8) -- (\WWq,\i * \HH/8)
-              node[pos=.5,below left=.5cm] {\large\j}
-              node[pos=.5,below right=.5cm] {\large\k};
+              node[pos=.5,below left =.25cm] {\large\j}
+              node[pos=.5,below right=.25cm] {\large\k};
           \end{scope}
         \end{bjpage}
       }

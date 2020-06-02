@@ -31,13 +31,14 @@
 
 \setmainfont{Liberation Sans}
 \newfontfamily{\weekFont}{Liberation Sans}
+\newfontfamily{\monthFont}{Allura}
 
 \makeatletter
-  \def\@week#1{%
+  \newcommand\@week[2][15]{%
     \color{gray!45}%
-    \fontsize{15}{15}%
+    \fontsize{#1}{#1}%
     \selectfont%
-    \weekFont{#1}
+    \weekFont{#2}
   }
   \def\sunday{\@week{Su}}
   \def\monday{\@week{Mo}}
@@ -46,6 +47,14 @@
   \def\thursday{\@week{Th}}
   \def\friday{\@week{Fr}}
   \def\saturday{\@week{Sa}}
+  %
+  \def\ssunday{\@week[10]{Su}}
+  \def\smonday{\@week[10]{Mo}}
+  \def\stuesday{\@week[10]{Tu}}
+  \def\swednesday{\@week[10]{We}}
+  \def\sthursday{\@week[10]{Th}}
+  \def\sfriday{\@week[10]{Fr}}
+  \def\ssaturday{\@week[10]{Sa}}
 \makeatother
 
 \newcommand{\fsize}[1]{\fontsize{#1}{#1}\selectfont}
@@ -61,6 +70,7 @@
   \deflength{\HHq}       {0.75\HH}
   \deflength{\dotSpacing}{\HH / 25}
   \deflength{\spacin}    {\HH / \EOFmonth}
+  \deflength{\offset}    {.75cm}
 
 \newenvironment{bjpage}%
   { \begin{tikzpicture}[yscale=-1] }%
